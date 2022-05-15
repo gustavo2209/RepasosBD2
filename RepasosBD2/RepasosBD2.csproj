@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDel.Designer.cs">
+      <DependentUpon>FormDel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormIns.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,10 +76,19 @@
     <Compile Include="FormQry.Designer.cs">
       <DependentUpon>FormQry.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUpd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpd.Designer.cs">
+      <DependentUpon>FormUpd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDel.resx">
+      <DependentUpon>FormDel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormIns.resx">
       <DependentUpon>FormIns.cs</DependentUpon>
@@ -83,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormQry.resx">
       <DependentUpon>FormQry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpd.resx">
+      <DependentUpon>FormUpd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

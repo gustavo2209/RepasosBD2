@@ -15,6 +15,7 @@ namespace RepasosBD2
     public partial class Form1 : Form
     {
         public SqlConnection cn;
+        private FormQry formQry;
 
         public Form1()
         {
@@ -38,10 +39,34 @@ namespace RepasosBD2
                 }
             }
 
-            FormQry formQry = new FormQry(this);
+            formQry = new FormQry(this);
             formQry.MdiParent = this;
             formQry.Show();
             formQry.BringToFront();
+        }
+
+        private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormIns formIns = new FormIns(this, formQry);
+
+            formIns.MdiParent = this;
+            formIns.Show();
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDel formDel = new FormDel(this, formQry);
+
+            formDel.MdiParent = this;
+            formDel.Show();
+        }
+
+        private void actualizarDatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUpd formUpd = new FormUpd(this, formQry);
+
+            formUpd.MdiParent = this;
+            formUpd.Show();
         }
     }
 }

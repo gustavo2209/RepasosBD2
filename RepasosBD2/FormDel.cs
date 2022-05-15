@@ -12,49 +12,42 @@ using System.Data.SqlClient;
 
 namespace RepasosBD2
 {
-    public partial class FormIns : Form
+    public partial class FormDel : Form
     {
         private Form1 form1;
         private FormQry formQry;
 
-        public FormIns()
+        public FormDel()
         {
             InitializeComponent();
         }
 
-        public FormIns(Form1 form1, FormQry formQry)
+        public FormDel(Form1 form1, FormQry formQry)
         {
             InitializeComponent();
             this.form1 = form1;
             this.formQry = formQry;
         }
 
-        private void FormIns_Load(object sender, EventArgs e)
+        private void FormDel_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i <= 20; i++)
-            {
-                comboBox1.Items.Add("" + i);
-                comboBox2.Items.Add("" + i);
-                comboBox3.Items.Add("" + i);
-            }
+            SqlDataAdapter da = new SqlDataAdapter("SELECT idalumno, nombre FROM alumnos", form1.cn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
 
-            comboBox1.SelectedIndex = 14;
-            comboBox2.SelectedIndex = 14;
-            comboBox3.SelectedIndex = 14;
+            comboBox1.DataSource = ds.Tables[0];
+            comboBox1.ValueMember = "idalumno";
+            comboBox1.DisplayMember = "nombre";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Trim().Length > 0)
+            if (comboBox1.SelectedIndex != -1)
             {
                 SqlCommand cm = new SqlCommand();
+
                 cm.Connection = form1.cn;
-                cm.CommandText = "INSERT INTO alumnos VALUES('" +
-                                    textBox1.Text + "', " +
-                                    comboBox1.SelectedIndex + ", " +
-                                    comboBox2.SelectedIndex + ", " +
-                                    comboBox3.SelectedIndex + ")";
-                //MessageBox.Show(cm.CommandText); // PARA SABER LOS POSIBLES ERRORES AL HACER LA CONSULTA
+                cm.CommandText = "DELETE FROM alumnos WHERE idalumno = " + comboBox1.SelectedValue;
                 form1.cn.Open();
                 cm.ExecuteNonQuery();
                 form1.cn.Close();
@@ -73,7 +66,7 @@ namespace RepasosBD2
             }
             else
             {
-                MessageBox.Show("Digite nombre de Alumno");
+                MessageBox.Show("Seleccione Alumno");
             }
         }
     }
